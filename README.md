@@ -1,69 +1,90 @@
-# PHP Web Fundamentals 🚀
+# PHP Web Fundamentals
 
-Este repositório atua como um ambiente isolado para o desenvolvimento e validação de fundamentos da linguagem PHP, manipulação de estruturas de dados em memória e processamento de requisições HTTP. 
+Repositório de estudos dos fundamentos do PHP, do zero: variáveis, condicionais, laços de repetição, arrays e formulários (GET/POST).
 
-O objetivo arquitetural aqui não é o design de sistemas complexos, mas sim a consolidação da sintaxe, lógica de programação pura e a transição do ambiente de terminal (CLI) para o modelo Cliente-Servidor web clássico.
+Sem framework, sem Docker, sem CSS: apenas PHP, HTML simples e a lógica de cada exercício.
 
-## 🛠 Stack Tecnológica e Infraestrutura
+## Como rodar
 
-A padronização do ambiente é garantida via conteinerização, eliminando o problema de "na minha máquina funciona" e a necessidade de instalações locais poluentes (como XAMPP).
+### Com XAMPP (recomendado)
 
-* **Linguagem:** PHP 8.2 (Rodando via Apache)
-* **Frontend:** HTML5 e CSS3 (Renderização Server-Side)
-* **Infraestrutura:** Docker e Docker Compose
-* **Arquitetura:** Front Controller para roteamento de exercícios
+1. Instale o [XAMPP](https://www.apachefriends.org/) e abra o **XAMPP Control Panel**.
+2. Clique em **Start** no módulo **Apache**.
+3. Copie a pasta `php-web-fundamentals` para dentro de `C:\xampp\htdocs\`:
 
-## 📂 Estrutura de Diretórios e Contextos
-
-O código está segregado por contexto de execução para manter a coesão:
-
-* **`public/`**: O Document Root do servidor. Contém o `index.php` (Dashboard) e os ativos de estilo (CSS).
-* **`src/lista-01-fundamentos/`**: Scripts focados em lógica pura (Variáveis, Loops, Arrays, Condicionais e Desafios).
-* **`src/lista-02-formularios/`**: Aplicações que exigem interação com o protocolo HTTP (GET/POST) e renderização de formulários HTML.
-* **`src/templates/`**: Componentes reutilizáveis como `header.php` e `footer.php` para manter a consistência visual dos exercícios.
-
-## 🚀 Como Executar Localmente
-
-### Pré-requisitos
-* [Docker](https://www.docker.com/) instalado e rodando.
-* [Docker Compose](https://docs.docker.com/compose/) (geralmente incluído no Docker Desktop).
-
-### Passo a Passo
-
-1. **Clone este repositório:**
-   ```bash
-   git clone https://github.com/SEU-USUARIO/php-web-fundamentals.git
-   cd php-web-fundamentals
+   ```
+   C:\xampp\htdocs\php-web-fundamentals\
    ```
 
-2. **Suba o ambiente com Docker:**
-   No diretório raiz do projeto, execute:
-   ```bash
-   docker-compose up -d --build
-   ```
-   *O parâmetro `-d` roda o container em background e `--build` garante que a imagem seja construída com as configurações mais recentes.*
+4. Abra o navegador e acesse: [http://localhost/php-web-fundamentals/](http://localhost/php-web-fundamentals/)
 
-3. **Acesse o Dashboard:**
-   Abra o seu navegador e acesse:
-   [http://localhost:8080](http://localhost:8080)
+### Com o servidor embutido do PHP (alternativa)
 
-4. **Navegue pelos Exercícios:**
-   O Dashboard listará automaticamente todos os arquivos `.php` dentro da pasta `src/`. Basta clicar no exercício desejado para executá-lo.
+Se tiver o PHP no PATH, rode na raiz do projeto:
 
-## 🛠 Comandos Úteis
+```bash
+php -S localhost:8000
+```
 
-* **Ver logs do container:**
-  ```bash
-  docker logs -f php_web_fundamentals
-  ```
-* **Parar o ambiente:**
-  ```bash
-  docker-compose down
-  ```
-* **Reiniciar o container:**
-  ```bash
-  docker-compose restart
-  ```
+E acesse [http://localhost:8000](http://localhost:8000).
 
----
-Desenvolvido para fins acadêmicos e consolidação de fundamentos em PHP.
+## Estrutura do repositório
+
+```
+php-web-fundamentals/
+├── index.php                  ← índice geral (Lista > Nível > Exercício)
+├── lista-01-fundamentos/      ← lógica pura (sem formulário)
+│   ├── nivel-01-variaveis/    ← exercicios-01 ao 04
+│   ├── nivel-02-condicionais/ ← exercicios-05 ao 08
+│   ├── nivel-03-for/          ← exercicios-09 ao 12
+│   ├── nivel-04-while/        ← exercicios-13 ao 15
+│   ├── nivel-05-do-while/     ← exercicios-16 e 17
+│   ├── nivel-06-foreach/      ← exercicios-18 ao 21
+│   └── desafios/              ← desafios-22 ao 25
+└── lista-02-formularios/      ← interação com GET/POST
+    ├── exercicio-01.php       ← Calculadora Simples (POST)
+    ├── exercicio-02.php       ← Par ou Ímpar (GET)
+    ├── exercicio-03.php       ← Tabuada Dinâmica (POST)
+    ├── exercicio-04.php       ← Sistema de Notas (POST)
+    ├── exercicio-05.php       ← Mini Sistema de Cadastro (POST + sessão)
+    └── desafio-extra.php      ← Contagem de maiores de idade
+```
+
+## Como cada exercício está organizado
+
+Cada arquivo é **um único arquivo PHP** (front + back juntos), com três seções na página:
+
+1. **📌 Enunciado** — o texto do exercício;
+2. **📄 Código do arquivo** — o código-fonte completo do próprio arquivo, com destaque de sintaxe (`highlight_file`);
+3. **▶️ Resultado** — o código funcionando de verdade (ou o formulário + resultado, na Lista 2).
+
+Dica de estudo: leia o enunciado, tente resolver sozinho, e depois compare com o código exibido na página. Mude os valores das variáveis no topo do arquivo e veja o resultado mudar.
+
+## Conteúdo
+
+### Lista 1 — Fundamentos
+
+| Nível | Tema | Exercícios |
+|---|---|---|
+| 1 | Variáveis e Operações Básicas | 01 a 04 |
+| 2 | Estruturas Condicionais (`if`) | 05 a 08 |
+| 3 | Estrutura de Repetição (`for`) | 09 a 12 |
+| 4 | Estrutura de Repetição (`while`) | 13 a 15 |
+| 5 | Estrutura de Repetição (`do...while`) | 16 e 17 |
+| 6 | `foreach` com Arrays | 18 a 21 |
+| — | Desafios (misturando estruturas) | 22 a 25 |
+
+### Lista 2 — Formulários (GET/POST)
+
+1. **Calculadora Simples** — POST + `switch`, com tratamento de divisão por zero.
+2. **Verificador de Par ou Ímpar** — GET + `if`/`elseif`/`else`.
+3. **Tabuada Dinâmica** — POST + repetição, exibida em tabela.
+4. **Sistema de Notas** — POST + cálculo de média e situação do aluno.
+5. **Mini Sistema de Cadastro** — POST + array + sessão, lista em tabela.
+6. **Desafio Extra** — conta quantas pessoas cadastradas são maiores de idade.
+
+## Observações
+
+- **Sem dependências externas**: basta PHP (XAMPP já inclui).
+- O código é simples de propósito: o objetivo é entender a lógica, não a "arquitetura".
+- Os links são relativos, então o projeto funciona em qualquer subpasta (ex: `htdocs/php-web-fundamentals/`).
